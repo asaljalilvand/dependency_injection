@@ -102,6 +102,7 @@ class CoupledNotification:
 `CoupledNotification` has to know about the details of SMTP library. If I want to add more ways of notifying
 my users, for example, sending text messages, this class would become dependent to even more low-level details.
 
+<img src="https://github.com/asaljalilvand/dependency_injection/assets/64210951/07cc5590-2bb6-4219-b5c5-0078bab752d9" height="300" />
 
 Steps to make this a little better:
 - add an interface `INotifier` that has `notify` method
@@ -152,6 +153,8 @@ class DecoupledNotifier:
         notifier = get_notifier(user.notification_preference)
         notifier.notify(receiver=get_user_contact(user), message=message)
 ```
+
+<img src="https://github.com/asaljalilvand/dependency_injection/assets/64210951/d6a8cdd3-2c57-4af8-a7de-8c3d78b08026" height="300" />
 
 and we managed to "invert" the dependency of `CoupledNotification` to the low-level SMTP library using the 
 interface injection technique.
